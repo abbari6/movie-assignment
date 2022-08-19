@@ -1,0 +1,20 @@
+.poster {
+  height: 150px;
+}
+.card-body {
+  background: #d9d9d9;
+  font-size: 16px;
+  font-weight: 550;
+  padding: 8px;
+  .rating {
+    font-size: 16px;
+    font-weight: 550;
+    margin-left: 5px;
+  }
+}
+.card {
+  cursor: pointer;
+}
+.fa-solid {
+  color: #f9a62b;
+}

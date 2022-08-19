@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="movie_details">
+        <button class="btn mb-3" routerLink="/movies/trending">
+          <i class="fa-solid fa-arrow-left-long"></i>
+        </button>
+        <h2>{{ movie?.original_title }}</h2>
+        <h6>Raiting: &nbsp; {{ movie?.vote_average }}/10</h6>
+        <p class="description">{{ movie?.overview }}</p>
+        <h6>
+          Release date <span class="date_lan"> {{ movie?.release_date }} </span>
+        </h6>
+        <h6>
+          Official language
+          <span class="date_lan"
+            >{{ movie?.original_language | uppercase }}
+          </span>
+        </h6>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <img
+        src="https://image.tmdb.org/t/p/original{{ movie?.poster_path }}"
+        class="card-img-top poster mt-2"
+        alt="..."
+      />
+    </div>
+  </div>
+</div>
+<div class="loader" *ngIf="loader"></div>

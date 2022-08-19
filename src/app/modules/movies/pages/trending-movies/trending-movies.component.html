@@ -1,0 +1,60 @@
+<div class="container-fluid mt-2">
+  <form (ngSubmit)="searchMovie()">
+    <div class="input-group">
+      <input
+        class="form-control"
+        [formControl]="search"
+        type="text"
+        placeholder="Search movie"
+        id="example-search-input"
+      />
+      <span class="input-group-append">
+        <button
+          [disabled]="search.invalid"
+          class="btn btn-primary radius-0 ms-n3"
+          type="submit"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+      </span>
+    </div>
+  </form>
+
+  <div class="row m-4">
+    <h3>Trending</h3>
+    <div
+      class="col-sm-3 mt-2"
+      *ngFor="
+        let movie of trendingMovies
+          | paginate
+            : {
+                itemsPerPage: 20,
+                currentPage: page,
+                totalItems: count
+              }
+      "
+    >
+      <div class="card" (click)="seletedMovie(movie.id)">
+        <img
+          src="https://image.tmdb.org/t/p/original{{ movie.backdrop_path }}"
+          class="card-img-top poster"
+          alt="..."
+        />
+        <div class="card-body">
+          {{ movie.original_title }} <br />
+          <i class="fa-solid fa-star"></i>
+          <span class="rating">{{ movie.vote_average }}/10 </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onPageChange($event)"
+    >
+    </pagination-controls>
+  </div>
+</div>
+<div class="loader" *ngIf="loader"></div>
