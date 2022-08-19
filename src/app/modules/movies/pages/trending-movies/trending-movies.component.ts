@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MoviesService } from 'src/app/core/services/movie-service/movies.service';
@@ -9,6 +9,7 @@ import { MoviesService } from 'src/app/core/services/movie-service/movies.servic
   styleUrls: ['./trending-movies.component.scss'],
 })
 export class TrendingMoviesComponent implements OnInit {
+
   trendingMovies: any = [];
   page: number = 1;
   count: number = 0;
@@ -41,6 +42,8 @@ export class TrendingMoviesComponent implements OnInit {
     } else {
       this.searchMovie();
     }
+    setTimeout(() => window.scrollTo(0,0));
+
   }
 
   searchMovie() {
